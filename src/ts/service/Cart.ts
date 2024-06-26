@@ -11,8 +11,7 @@ export default class Cart {
         return [...this._items]; 
     }
     withoutPurchase(): number{
-        const items = this.items;
-        return items.reduce((acc, item)=>{
+        return this.items.reduce((acc, item)=>{
             return acc+= item.price;
         }, 0);
     }
@@ -21,6 +20,6 @@ export default class Cart {
         return cost*(100 - purchase)*0.01;
     }
     remove(id:number): void{
-        this._items = this._items.filter((item) => {return item.id != id});
+        this._items = this._items.filter((item) => {item.id !== id});
     }
 }
